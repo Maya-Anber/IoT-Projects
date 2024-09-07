@@ -1,5 +1,6 @@
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>;
+#include <stdlib.h>;
+
 int main() {
 int num[5] = {5, 10, 15, 20, 25};
 int sum = 0;
