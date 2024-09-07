@@ -16,6 +16,23 @@ void setup() {
   myServo.write(0);            // Start with door closed (0 degrees)
   pinMode(IR_SENSOR_PIN, INPUT);
 }
+void openDoor() {
+  Serial.println("Opening door...");
+  for (int angle = 0; angle <= 180; angle++) {
+    myServo.write(angle);  // Rotate servo from 0 to 180 degrees
+    delay(15);             // Delay to give servo time to move
+  }
+  doorOpen = true;         // Set door state to open
+}
+
+void closeDoor() {
+  Serial.println("Closing door...");
+  for (int angle = 180; angle >= 0; angle--) {
+    myServo.write(angle);  // Rotate servo from 180 back to 0 degrees
+    delay(15);             // Delay to give servo time to move
+  }
+  doorOpen = false;        // Set door state to closed
+}
 
 void loop() {
   sensorValue = analogRead(IR_SENSOR_PIN);  // Read the analog value from the IR sensor
@@ -34,20 +51,3 @@ void loop() {
   delay(100);  // Small delay for sensor reading stability
 }
 
-void openDoor() {
-  Serial.println("Opening door...");
-  for (int angle = 0; angle <= 180; angle++) {
-    myServo.write(angle);  // Rotate servo from 0 to 180 degrees
-    delay(15);             // Delay to give servo time to move
-  }
-  doorOpen = true;         // Set door state to open
-}
-
-void closeDoor() {
-  Serial.println("Closing door...");
-  for (int angle = 180; angle >= 0; angle--) {
-    myServo.write(angle);  // Rotate servo from 180 back to 0 degrees
-    delay(15);             // Delay to give servo time to move
-  }
-  doorOpen = false;        // Set door state to closed
-}
