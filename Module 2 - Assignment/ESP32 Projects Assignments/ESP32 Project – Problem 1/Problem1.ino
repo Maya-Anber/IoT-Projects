@@ -2,7 +2,7 @@
 
 #define IR_SENSOR_PIN 34  // Analog pin connected to IR sensor
 #define SERVO_PIN 5       // GPIO pin connected to the servo motor
-#define THRESHOLD 100     // Threshold for detecting a person (adjust based on sensor)
+#define THRESHOLD 1000     // Threshold for detecting a person (adjust based on sensor)
 #define CLOSE_DELAY 5000  // Delay in milliseconds (5 seconds) before closing the door
 
 Servo myServo;
