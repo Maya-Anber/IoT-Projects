@@ -1,5 +1,0 @@
-The Tensilica Xtensa LX6 is a dual-core microprocessor designed for high-performance and low-power
-applications. It features two Xtensa LX6 processor cores, each with a 5-stage pipeline, and a maximum clock
-frequency of 1.5 GHz. The processor has a 32-bit or 64-bit instruction set architecture (ISA) and supports
-various peripherals, including DDR3/4 memory controllers, PCIe, and USB. The Xtensa LX6 is used in various
-applications, including networking, storage, and industrial control systems.
