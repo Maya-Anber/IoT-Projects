@@ -1,1 +1,9 @@
 https://wokwi.com/projects/405357636349339649
+
+• Servo Motor Control: Connect the SG90 servo motor to the ESP32 and program it to rotate to the
+specified angle when the corresponding button on the keypad is pressed(e.g., 45°, 90°, 60°, 30°, 120°, 180°).
+• Stop Button: Implement a &quot;Stop&quot; button on the keypad that halts the servo motor&#39;s movement at
+its current position.
+• Reset Button: Include a &quot;Reset&quot; button that brings the servo motor back to the 0° position. •
+BONUS: Custom Angle Button: Provide an additional button to allow users to input a custom
+angle (e.g., 18°) for the servo motor rotation from the serial monitor.
