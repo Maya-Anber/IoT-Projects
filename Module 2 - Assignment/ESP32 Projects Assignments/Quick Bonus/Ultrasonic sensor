@@ -1,2 +1,62 @@
 //Use Ultrasonic sensor to measure any distance and print measured distance on Arduino serial with LED and Buzzer Alarm
 // https://wokwi.com/projects/408419054767333377
+#define TRIG_PIN 2    // Pin connected to the TRIG of HC-SR04
+#define ECHO_PIN 4    // Pin connected to the ECHO of HC-SR04
+#define LED_PIN 12    // Pin connected to the LED
+#define BUZZER_PIN 13 // Pin connected to the Buzzer
+
+void setup() {
+  Serial.begin(115200);    // Initialize serial communication
+  pinMode(TRIG_PIN, OUTPUT);  // Set TRIG pin as output
+  pinMode(ECHO_PIN, INPUT);   // Set ECHO pin as input
+  pinMode(LED_PIN, OUTPUT);   // Set LED pin as output
+  pinMode(BUZZER_PIN, OUTPUT);// Set Buzzer pin as output
+  
+  digitalWrite(LED_PIN, LOW);   // Ensure LED is off initially
+  digitalWrite(BUZZER_PIN, LOW);// Ensure Buzzer is off initially
+}
+
+void loop() {
+  long duration, distance;
+  
+  // Clear the TRIG pin
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+
+  // Set the TRIG pin HIGH for 10 microseconds to start the measurement
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  // Read the ECHO pin duration
+  duration = pulseIn(ECHO_PIN, HIGH);
+
+  // Calculate the distance in centimeters
+  distance = (duration / 2) / 29.1; // Speed of sound: 29.1 us/cm
+
+  // Print distance to the serial monitor
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  // Trigger alarm if distance is less than a threshold (e.g., 10 cm)
+  if (distance < 10) {
+    Serial.println("Warning! Object detected close by!");
+    
+    // Turn on LED and Buzzer
+    digitalWrite(LED_PIN, HIGH);
+    digitalWrite(BUZZER_PIN, HIGH);
+    
+    delay(1000);  // Keep the alarm on for 1 second
+
+    // Turn off LED and Buzzer
+    digitalWrite(LED_PIN, LOW);
+    digitalWrite(BUZZER_PIN, LOW);
+  } else {
+    // No alarm
+    digitalWrite(LED_PIN, LOW);
+    digitalWrite(BUZZER_PIN, LOW);
+  }
+
+  delay(500);  // Update every 500 milliseconds
+}
