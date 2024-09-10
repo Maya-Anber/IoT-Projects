@@ -2,24 +2,26 @@
 #include <vector>
 #include <algorithm>
 
+using namespace std;
+
 // Function to check if the vector is sorted
-bool isSorted(const std::vector<int>& vec) {
-    return std::is_sorted(vec.begin(), vec.end());
+bool isSorted(const vector<int>& vec) {
+    return is_sorted(vec.begin(), vec.end());
 }
 
 // Function to perform a single pass of bubble sort
-std::vector<int> bubbleSortPass(const std::vector<int>& vec) {
-    std::vector<int> result(vec);
+vector<int> bubbleSortPass(const vector<int>& vec) {
+    vector<int> result(vec);
     for (size_t i = 0; i < result.size() - 1; ++i) {
         if (result[i] > result[i + 1]) {
-            std::swap(result[i], result[i + 1]);
+            swap(result[i], result[i + 1]);
         }
     }
     return result;
 }
 
 // Recursive bubble sort function
-std::vector<int> bubbleSort(const std::vector<int>& vec) {
+vector<int> bubbleSort(const vector<int>& vec) {
     if (isSorted(vec)) {
         return vec;
     } else {
@@ -28,21 +30,21 @@ std::vector<int> bubbleSort(const std::vector<int>& vec) {
 }
 
 int main() {
-    std::vector<int> vec = {64, 34, 25, 12, 22, 11, 90};
+    vector<int> vec = {64, 34, 25, 12, 22, 11, 90};
 
-    std::cout << "Original array: ";
+    cout << "Original array: ";
     for (int num : vec) {
-        std::cout << num << " ";
+        cout << num << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
-    std::vector<int> sortedVec = bubbleSort(vec);
+    vector<int> sortedVec = bubbleSort(vec);
 
-    std::cout << "Sorted array: ";
+    cout << "Sorted array: ";
     for (int num : sortedVec) {
-        std::cout << num << " ";
+        cout << num << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
     return 0;
 }
